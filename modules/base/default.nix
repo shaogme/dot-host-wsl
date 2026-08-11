@@ -4,6 +4,7 @@ let
   cfg = config.base;
 in {
   imports = [
+    ./container.nix
     ./memory.nix
     ./update.nix
   ];

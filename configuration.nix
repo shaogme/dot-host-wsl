@@ -29,6 +29,7 @@ in
   # 基础配置与内存调优
   base.enable = true;
   base.memory.mode = "aggressive";
+  base.container.podman.enable = true;
 
   base.update = {
     enable = true;
@@ -43,9 +44,6 @@ in
   # WSL 配置
   wsl.enable = true;
   wsl.defaultUser = "nixos";
-
-  # 启用 Docker Desktop 无缝集成
-  wsl.docker-desktop.enable = true;
 
   # 启用 SSH Agent 透传，共享 Windows 的 SSH 密钥/凭据
   wsl.ssh-agent.enable = true;

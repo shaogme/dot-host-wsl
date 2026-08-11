@@ -10,6 +10,7 @@ let
   baseEnable = pkgs.lib.boolToString eval.config.base.enable;
   syncUrl = eval.config.base.update.sync.url;
   memoryMode = eval.config.base.memory.mode;
+  podmanEnable = pkgs.lib.boolToString eval.config.base.container.podman.enable;
 in
 pkgs.runCommand "static-check" {} ''
   echo "Checking WSL & Base configuration evaluation..."
@@ -17,8 +18,9 @@ pkgs.runCommand "static-check" {} ''
      && "${wslUser}" == "nixos" \
      && "${baseEnable}" == "true" \
      && "${syncUrl}" == "https://github.com/shaogme/dot-host-wsl" \
-     && "${memoryMode}" == "aggressive" ]]; then
-    echo "Evaluation check passed: wsl, base, syncUrl, memory.mode=aggressive"
+     && "${memoryMode}" == "aggressive" \
+     && "${podmanEnable}" == "true" ]]; then
+    echo "Evaluation check passed: wsl, base, syncUrl, memory.mode=aggressive, container.podman.enable=true"
     touch $out
   else
     echo "Evaluation check failed!"
