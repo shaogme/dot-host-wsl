@@ -81,6 +81,17 @@ in
   # 启用 nix-ld 支持运行非 Nix 打包的动态链接二进制程序
   programs.nix-ld.enable = true;
 
+  # 启用 Zsh 及其自动联想与语法高亮功能
+  programs.zsh = {
+    enable = true;
+    enableCompletion = true;
+    autosuggestions.enable = true;
+    syntaxHighlighting.enable = true;
+  };
+
+  # 设置默认 Shell 为 Zsh
+  users.defaultUserShell = pkgs.zsh;
+
   # 开发工具集：Rust, Node.js LTS, C++ 工具链, Python 3 等
   environment.systemPackages = with pkgs; [
     # 1. 最新 Rust 工具链
@@ -98,8 +109,9 @@ in
     cargo-deny
     cargo-binstall
 
-    # 2. Node.js LTS
+    # 2. Node.js LTS & Corepack
     nodejs
+    corepack
 
     # 3. C++ 工具链
     gcc
