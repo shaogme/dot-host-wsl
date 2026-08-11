@@ -16,6 +16,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@main
+        with:
+          token: ${{ secrets.GH_PAT || secrets.PAT || secrets.GITHUB_TOKEN }}
 
       - name: Install Nix
         uses: cachix/install-nix-action@v31
@@ -42,7 +44,7 @@ jobs:
       - name: Create Pull Request and Enable Auto-Merge
         if: steps.git-check.outputs.has_changes == 'true'
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_PAT || secrets.PAT || secrets.GITHUB_TOKEN }}
         run: |
           BRANCH_NAME="update-npins-deps-$(date +'%Y%m%d')"
           
