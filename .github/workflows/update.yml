@@ -1,0 +1,68 @@
+name: Daily Update Dependencies
+
+on:
+  schedule:
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+
+jobs:
+  update-dependencies:
+    name: Update npins dependencies & auto-merge PR
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@main
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
+        with:
+          nix_path: nixpkgs=channel:nixos-unstable
+
+      - name: Install npins
+        run: nix profile install nixpkgs#npins
+
+      - name: Update npins dependencies
+        run: npins update
+
+      - name: Check for changes
+        id: git-check
+        run: |
+          if git diff --quiet npins/sources.json; then
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+            echo "No dependency updates found."
+          else
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+            echo "Dependency updates detected."
+          fi
+
+      - name: Create Pull Request and Enable Auto-Merge
+        if: steps.git-check.outputs.has_changes == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          BRANCH_NAME="update-npins-deps-$(date +'%Y%m%d')"
+          
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git checkout -b "$BRANCH_NAME"
+          git add npins/sources.json
+          git commit -m "chore(npins): update dependencies $(date +'%Y-%m-%d')"
+          git push origin "$BRANCH_NAME" --force
+
+          DEFAULT_BRANCH=$(git remote show origin | sed -n '/HEAD branch/s/.*: //p')
+          DEFAULT_BRANCH=${DEFAULT_BRANCH:-main}
+
+          PR_URL=$(gh pr create \
+            --title "chore(npins): update dependencies ($(date +'%Y-%m-%d'))" \
+            --body "Automated daily dependency update using npins." \
+            --head "$BRANCH_NAME" \
+            --base "$DEFAULT_BRANCH")
+          
+          echo "Created PR: $PR_URL"
+          
+          gh pr merge "$PR_URL" --auto --rebase || gh pr merge "$PR_URL" --auto --squash

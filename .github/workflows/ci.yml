@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  push:
+    branches: [ main  ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: Run Tests & Verification
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@main
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
+        with:
+          nix_path: nixpkgs=channel:nixos-unstable
+
+      - name: Install npins
+        run: nix profile install nixpkgs#npins
+
+      - name: Verify npins dependencies
+        run: npins verify
+
+      - name: Run Nix evaluation test
+        run: nix-build tests/eval.nix
+
+  ci-success:
+    name: ci-success
+    runs-on: ubuntu-latest
+    needs: [test]
+    if: always()
+    steps:
+      - name: Check test status
+        run: |
+          if [ "${{ needs.test.result }}" = "success" ]; then
+            echo "CI test suite passed successfully!"
+            exit 0
+          else
+            echo "CI test suite failed!"
+            exit 1
+          fi
