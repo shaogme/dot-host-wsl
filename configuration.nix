@@ -20,9 +20,6 @@ in
   # 启用 Lix 代替默认的 CppNix
   nix.package = pkgs.lixPackageSets.git.lix;
 
-  # 允许非自由软件 (allow unfree)
-  nixpkgs.config.allowUnfree = true;
-
   # 应用 rust-overlay
   nixpkgs.overlays = [ (import sources.rust-overlay) ];
 
