@@ -120,17 +120,11 @@ in
     pkg-config
     ninja
 
-    # 4. Python 3 环境
-    python3
-    python3Packages.pip
-    python3Packages.setuptools
+    # 4. 包管理与环境工具
+    pixi
+    distrobox
 
-    # 5. AI 工具链
-    codex
-    claude-code
-    opencode
-
-    # 6. 常用开发与实用工具
+    # 5. 常用开发与实用工具
     git
     git-lfs
     gh
