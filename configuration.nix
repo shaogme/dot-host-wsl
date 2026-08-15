@@ -35,7 +35,8 @@ in
       url = "https://github.com/shaogme/dot-host-wsl";
       branch = "main";
     };
-    upgrade.enable = true;
+    upgrade.enable = false;
+    gc.enable = true;
   };
 
   # WSL 配置
