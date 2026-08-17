@@ -4,8 +4,8 @@
       "type": "Channel",
       "name": "nixos-unstable",
       "artifact": "nixexprs.tar.xz",
-      "url": "https://releases.nixos.org/nixos/unstable/nixos-26.11pre1053317.0e251e24a4f2/nixexprs.tar.xz",
-      "hash": "sha256-yjGG65gA1jORt0hWxjzrnw3AYkIn8EWolp8vezwXZ3I="
+      "url": "https://releases.nixos.org/nixos/unstable/nixos-26.11pre1055335.e5bdc4a41d4c/nixexprs.tar.xz",
+      "hash": "sha256-kSR/jfpR4cE26YRZ8exQkoRbEA30vyWimajwZANYYaE="
     },
     "nixos-wsl": {
       "type": "Git",
@@ -36,9 +36,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "b211eadeba8b180da9453ec3413a8a3535c85b3f",
-      "url": "https://github.com/oxalica/rust-overlay/archive/b211eadeba8b180da9453ec3413a8a3535c85b3f.tar.gz",
-      "hash": "sha256-MS8cOa/ii1+QA8R3JWVzqEIoXimu9n50GwQDiBVTFOM="
+      "revision": "b479967b8ed7aca40ba52cf12f460484c53928a9",
+      "url": "https://github.com/oxalica/rust-overlay/archive/b479967b8ed7aca40ba52cf12f460484c53928a9.tar.gz",
+      "hash": "sha256-26qGGBO364d5JbTMrFchrxp7xY8CJp3D5cjkND99t7E="
     }
   },
   "version": 8
