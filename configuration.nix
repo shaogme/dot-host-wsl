@@ -9,13 +9,29 @@
 
 let
   sources = import ./npins;
+
+  # 自动载入 /etc/nixos-extra 下的所有 .nix 配置文件（若目录存在）
+  extraModulesDir = /etc/nixos-extra;
+  extraModules =
+    if builtins.pathExists extraModulesDir then
+      lib.pipe (builtins.readDir extraModulesDir) [
+        (lib.filterAttrs (name: type:
+          (type == "regular" || type == "symlink")
+          && lib.hasSuffix ".nix" name
+          && !(lib.hasPrefix "." name)
+        ))
+        builtins.attrNames
+        (map (name: extraModulesDir + "/${name}"))
+      ]
+    else
+      [];
 in
 {
   imports = [
     # include NixOS-WSL modules tracked by npins
     "${sources.nixos-wsl}/modules"
     ./modules/base
-  ];
+  ] ++ extraModules;
 
   # 启用 Lix 代替默认的 CppNix
   nix.package = pkgs.lixPackageSets.git.lix;
