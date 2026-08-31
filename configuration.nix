@@ -20,9 +20,6 @@ in
   # 启用 Lix 代替默认的 CppNix
   nix.package = pkgs.lixPackageSets.git.lix;
 
-  # 应用 rust-overlay
-  nixpkgs.overlays = [ (import sources.rust-overlay) ];
-
   # 基础配置与内存调优
   base.enable = true;
   base.memory.mode = "aggressive";
@@ -88,41 +85,7 @@ in
   # 设置默认 Shell 为 Zsh
   users.defaultUserShell = pkgs.zsh;
 
-  # 开发工具集：Rust, Node.js LTS, C++ 工具链, Python 3 等
   environment.systemPackages = with pkgs; [
-    # 1. 最新 Rust 工具链
-    (rust-bin.stable.latest.minimal.override {
-      extensions = [ "rust-src" "rust-analyzer" "rustfmt" "clippy" "rust-docs" ];
-    })
-    (lib.lowPrio (rust-bin.nightly.latest.minimal.override {
-      extensions = [ "rust-src" ];
-    }))
-    cargo-nextest
-    cargo-expand
-    cargo-watch
-    cargo-edit
-    cargo-audit
-    cargo-deny
-    cargo-binstall
-
-    # 2. Node.js LTS & Corepack
-    nodejs
-    corepack
-
-    # 3. C++ 工具链
-    gcc
-    gnumake
-    cmake
-    clang
-    gdb
-    pkg-config
-    ninja
-
-    # 4. 包管理与环境工具
-    pixi
-    distrobox
-
-    # 5. 常用开发与实用工具
     git
     git-lfs
     gh

@@ -10,10 +10,9 @@
    - 全局采用 `npins` 代替传统 Flakes 或手动 `fetchFromGitHub`/`fetchTarball` 管理外部依赖（如 `nixpkgs`、`nixos-wsl`、`rust-overlay` 等）。
    - 依赖项及锁定版本统一声明在 [npins/sources.json](npins/sources.json) 中，保证系统构建的可复现性与维护便利性。
 
-2. **Lix 引擎与开箱即用开发环境**
+2. **Lix 引擎和容器环境**
    - 默认启用 `lix` (替代默认 CppNix) 以提供更高的评估性能与更友好的错误提示。
-   - 整合 `rust-overlay` 提供最新 Stable 与 Nightly 版本的 Rust 工具链（含 `rust-analyzer`、`clippy`、`rustfmt`、`cargo-nextest` 等）。
-   - 预装 Node.js LTS、C++ 工具链 (GCC, Clang, CMake, Ninja, GDB)、Python 3、AI 开发工具 (Codex, Claude-Code, OpenCode) 以及系统常用工具 (Git, Ripgrep, JQ, Tmux 等)。
+   - 默认启用 `podman`，提供容器环境管理。
 
 3. **分级内存优化策略 ([modules/base/memory.nix](modules/base/memory.nix))**
    - 提供四种可选模式（`aggressive`, `balanced`, `conservative`, `none`），特别适合低内存或 WSL 环境：
