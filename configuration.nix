@@ -10,6 +10,8 @@
 let
   sources = import ./npins;
 
+  dot-base = import sources.dot-base { };
+
   # 自动载入 /etc/nixos-extra 下的所有 .nix 配置文件（若目录存在）
   extraModulesDir = /etc/nixos-extra;
   extraModules =
@@ -30,7 +32,7 @@ in
   imports = [
     # include NixOS-WSL modules tracked by npins
     "${sources.nixos-wsl}/modules"
-    ./modules/base
+    dot-base.nixosModules.default
   ] ++ extraModules;
 
   # 启用 Lix 代替默认的 CppNix
@@ -48,7 +50,11 @@ in
       url = "https://github.com/shaogme/dot-host-wsl";
       branch = "main";
     };
-    upgrade.enable = false;
+    upgrade = {
+      enable = true;
+      timer.enable = false;
+      allowReboot = false;
+    };
     gc.enable = true;
   };
 
