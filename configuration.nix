@@ -52,8 +52,9 @@ in
     };
     upgrade = {
       enable = true;
-      timer.enable = false;
-      allowReboot = false;
+      timer = {
+        enable = false;
+      };
     };
     gc.enable = true;
   };
