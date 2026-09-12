@@ -29,9 +29,9 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "8c333e5b3abb693139e4df80988810ce44788b4e",
-      "url": "https://github.com/nix-community/NixOS-WSL/archive/8c333e5b3abb693139e4df80988810ce44788b4e.tar.gz",
-      "hash": "sha256-SBHeKJ6fyQIb8PaUc0iarznGhaGdnc+SXdDb5Z96Qn0="
+      "revision": "72c92b11bb8289e6651c7fef29cc0a885fd6a255",
+      "url": "https://github.com/nix-community/NixOS-WSL/archive/72c92b11bb8289e6651c7fef29cc0a885fd6a255.tar.gz",
+      "hash": "sha256-DoYGPM6QpnYBLWj9gGw6ZwAzIX+HrAVov1BoT+8Jixo="
     },
     "nixpkgs": {
       "type": "Channel",
