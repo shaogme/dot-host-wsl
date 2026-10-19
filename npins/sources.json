@@ -9,9 +9,9 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "dc8178fcacb5b2039ee2ee8a4112dad4962d4144",
-      "url": "https://github.com/shaogme/dot-base/archive/dc8178fcacb5b2039ee2ee8a4112dad4962d4144.tar.gz",
-      "hash": "sha256-LFhwf9drRzpkvUcG2xdSCgnIRm/BZBDp8oiLcvFlVOc="
+      "revision": "67e4d95c3228fef0867ce37c4b5548d669cab714",
+      "url": "https://github.com/shaogme/dot-base/archive/67e4d95c3228fef0867ce37c4b5548d669cab714.tar.gz",
+      "hash": "sha256-AtJLi0AvitrpqkI/TwugwwFbCN4yL6C4O7S7Kd5oJgU="
     },
     "nixos-unstable": {
       "type": "Channel",
