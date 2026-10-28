@@ -17,8 +17,8 @@
       "type": "Channel",
       "name": "nixos-unstable",
       "artifact": "nixexprs.tar.xz",
-      "url": "https://releases.nixos.org/nixos/unstable/nixos-26.11pre1100280.3ec636362e18/nixexprs.tar.xz",
-      "hash": "sha256-17eNBI5Khe4JZaRkL5hRGPWf8MZ6qv+bWAr4V8YeKBw="
+      "url": "https://releases.nixos.org/nixos/unstable/nixos-26.11pre1103272.31ecbaca1bde/nixexprs.tar.xz",
+      "hash": "sha256-yXRSdZdZZqccEL+j11lc1gFG1f7V5j8N7oPBTHwf7n4="
     },
     "nixos-wsl": {
       "type": "Git",
@@ -37,8 +37,8 @@
       "type": "Channel",
       "name": "nixpkgs-unstable",
       "artifact": "nixexprs.tar.xz",
-      "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.11pre1100901.d3b13ad75cc4/nixexprs.tar.xz",
-      "hash": "sha256-lrp+A0ZwQN3V0tSZP6vVFIX/16FFOzr19mSup8XD80w="
+      "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.11pre1103464.f05535a0efcb/nixexprs.tar.xz",
+      "hash": "sha256-8VGQQhZfWvvWCoqOf5lb8AzUVbKJKvnihiXwJKKPH0s="
     }
   },
   "version": 8
