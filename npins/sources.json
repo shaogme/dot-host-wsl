@@ -9,9 +9,9 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "89ee3b323cccb2b71f322d8a2172a48d5ab1a16b",
-      "url": "https://github.com/shaogme/dot-base/archive/89ee3b323cccb2b71f322d8a2172a48d5ab1a16b.tar.gz",
-      "hash": "sha256-ZWbhJeNDIsSuEQwbrTuWfncjGo29WVGeV0I7O2yfy7M="
+      "revision": "2a1aad6611783ea00807f6c6c25bd6a7f300712b",
+      "url": "https://github.com/shaogme/dot-base/archive/2a1aad6611783ea00807f6c6c25bd6a7f300712b.tar.gz",
+      "hash": "sha256-gxO3NjZUM0qpb94STIDA6Q/seWgvfkInaPgIn1mdbx8="
     },
     "nixos-unstable": {
       "type": "Channel",
@@ -29,9 +29,9 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "e45b24b7df093299072b13bf3144ed0ee340e769",
-      "url": "https://github.com/nix-community/NixOS-WSL/archive/e45b24b7df093299072b13bf3144ed0ee340e769.tar.gz",
-      "hash": "sha256-5R5CFIKj06qTQevhg/rCFUSAMxfNgdn0oIBL57R7u0Y="
+      "revision": "05721a428830972f025a8575b1a19c418d422d1b",
+      "url": "https://github.com/nix-community/NixOS-WSL/archive/05721a428830972f025a8575b1a19c418d422d1b.tar.gz",
+      "hash": "sha256-ncpk0eCCyhU7M7U/PGbtwb1PXqobksBBYbJJ13abV2g="
     },
     "nixpkgs": {
       "type": "Channel",
